@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+
+<body>
+    <h1>Registration Form</h1>
+    <p>Please Enter Your Details Below</p>
+
+    <form id="regform" name="form">
+        <!-- Name -->
+        <label for="fname">Your Name</label><br>
+        <input type="text" id="fname" name="fname" required><br><br>
+
+        <!-- Age -->
+        <label for="age">Your age</label><br>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <!-- Gender -->
+        <label for="Gender">Gender</label><br>
+        <input type="radio" name="Gender" id="Male" value="Male" required>
+        <label for="Male">Male</label>
+        <input type="radio" name="Gender" id="Female" value="Female">
+        <label for="Female">Female</label>
+        <input type="radio" name="Gender" id="Others" value="Others">
+        <label for="Others">Others</label>
+
+
+        <br><br>
+        <!-- State -->
+        <label for="states">Choose your state:</label>
+        <select id="state" name="statelist" form="regform">
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Banglore">Banglore</option>
+        </select>
+        <br><br>
+
+        <!-- Mobile Number -->
+        <label for="Mob">Mobile Number</label><br>
+        <input type="number" id="Mob" name="Mob" minlength="10" maxlength="10" required><br><br>
+
+        <!-- Email -->
+        <label for="email">Your Email</label><br>
+        <input type="email" name="email" id="email" required><br><br>
+
+        <!-- Submit -->
+        <input type="submit" value="Submit">
+
+    </form>
+
+    <!-- JavaScript for Form Validation and submit button-->
+    <script>
+       
+       document.getElementById("regform").addEventListener("submit" ,function(event){
+
+        event.preventDefault(); //prevents the form from submitting normally
+
+        var name = document.getElementById("fname").value;
+        var age = document.getElementById("age").value;
+        var Gender = document.querySelector('input[name="Gender"]:checked').value;
+       
+        console.log("Name: "+ name);
+        console.log("age: "+ age);
+        console.log("Gender: "+ Gender);
+        
+    
+    
+    }); 
+        
+
+    </script>
+</body>
+
+</html>

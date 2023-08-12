@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Practice</title>
+</head>
+<body>
+    <h1>This is a JavaScript Practice Playground</h1>
+    <h3>Let's make a button</h3>
+    <button onclick="addlike()">Like</button>
+    <h4 id="cnt">0</h4>
+
+    <button onclick="dislike()">Dislike</button>
+    <h4 id="dcnt">0</h4>
+
+    <form id="form">
+        <input type="text"/>               
+        
+    </form>
+    <button onclick="comment()">Comment</button>
+    <h4 id="cmnt">0</h4>
+ 
+    <button onclick="save()">Save Post</button>
+</body>
+
+<script>
+    let count = 0;
+    let dcount = 0;
+
+    function addlike()
+    {
+        if(count===0)
+        {
+            if(dcount===1)
+            {
+                dcount--;
+                document.getElementById("dcnt").textContent = dcount;
+            }
+            count++;
+            document.getElementById("cnt").textContent = count;
+        }
+        else if(count===1)
+        {
+            count--;
+            document.getElementById("cnt").textContent = count;
+        }
+    }
+    function dislike()
+    {
+        
+        if(dcount===0)
+        {
+
+            if(count===1)
+            {
+                count--;
+                document.getElementById("cnt").textContent=count;
+            }
+            dcount++;
+            document.getElementById("dcnt").textContent = dcount;
+
+        }
+        else if(dcount===1)
+        {
+            dcount--;
+            document.getElementById("dcnt").textContent = dcount;
+        }
+    }
+    function comment()
+    {
+        
+    }
+
+</script>
+</html>
