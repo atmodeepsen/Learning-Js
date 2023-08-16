@@ -14,15 +14,15 @@
     <form id="regform" name="form">
         <!-- Name -->
         <label for="fname">Your Name</label><br>
-        <input type="text" id="fname" name="fname" required><br><br>
+        <input type="text" id="fname" name="fname"><br><br>
 
         <!-- Age -->
         <label for="age">Your age</label><br>
-        <input type="number" id="age" name="age" required><br><br>
+        <input type="number" id="age" name="age"><br><br>
 
         <!-- Gender -->
         <label for="Gender">Gender</label><br>
-        <input type="radio" name="Gender" id="Male" value="Male" required>
+        <input type="radio" name="Gender" id="Male" value="Male">
         <label for="Male">Male</label>
         <input type="radio" name="Gender" id="Female" value="Female">
         <label for="Female">Female</label>
@@ -43,35 +43,114 @@
 
         <!-- Mobile Number -->
         <label for="Mob">Mobile Number</label><br>
-        <input type="number" id="Mob" name="Mob" minlength="10" maxlength="10" required><br><br>
+        <input type="number" id="mob" name="Mob" minlength="10" maxlength="10"><br><br>
 
         <!-- Email -->
         <label for="email">Your Email</label><br>
-        <input type="email" name="email" id="email" required><br><br>
+        <input type="email" name="email" id="email"><br><br>
 
         <!-- Submit -->
-        <input type="submit" value="Submit">
+        <button id="btn">Submit</button>
 
     </form>
 
     <!-- JavaScript for Form Validation and submit button-->
     <script>
-       
-       document.getElementById("regform").addEventListener("submit" ,function(event){
 
-        event.preventDefault(); //prevents the form from submitting normally
+        function checkValidation(fname, age, Gender, Male, state, email) {
 
-        var name = document.getElementById("fname").value;
-        var age = document.getElementById("age").value;
-        var Gender = document.querySelector('input[name="Gender"]:checked').value;
-       
-        console.log("Name: "+ name);
-        console.log("age: "+ age);
-        console.log("Gender: "+ Gender);
-        
-    
-    
-    }); 
+            //name validation
+            if (fname.length <= 0) //means the name is empty
+            {
+                document.getElementById("fname").style.border = "2px solid red"
+
+            }
+            else {
+                document.getElementById("fname").style.border = "2px solid black"
+            }
+
+            //age validation
+            if (age.length <= 0) {
+                document.getElementById("age").style.border = "2px solid red";
+            }
+            else {
+                document.getElementById("age").style.border = "2px solid black";
+            }
+
+            //Gender Verification 
+            var selected = document.querySelector('input[name="Gender"]:checked');
+
+            if (selected != null) {
+                document.getElementById("male").style.border = "2px solid black"
+            }
+            else {
+                document.getElementById("male").style.border = "2px solid red";
+            }
+
+            //mobile number
+
+            if (mob.length < 10) {
+                document.getElementById("mob").style.border = "2px solid red"
+            }
+            else {
+                document.getElementById("mob").style.border = "2px solid black"
+            }
+
+            //email verification
+            var x = document.form.email.value;
+            var atposition = x.indexOf("@");
+            var dotposition = x.lastIndexOf(".");
+            if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= x.length) {
+                document.getElementById("email").style.border = "2px solid red"
+            }
+            else
+            {
+                document.getElementById("email").style.border = "2px solid black"
+            }
+
+            return(fname.length<=0 || age.lenght<=0 || mob.length<10);
+        }
+
+        function printDetails()
+        {
+            
+            event.preventDefault(); //prevents the form from submitting normally
+
+            var name = document.getElementById("fname").value;
+            var age = document.getElementById("age").value;
+            var Gender = document.querySelector('input[name="Gender"]:checked').value;
+            var state = document.querySelector('input[name=states]').value;
+            var phone = document.getElementById("mob").value;
+            var email = document.getElementById("email").value;
+
+            var obj = {
+                name : fname,
+                age : age,
+                Gender : Gender,
+                state : state,
+                phone : mob,
+                email : email
+            }
+
+            if(checkValidation(name, age, mob))
+            {
+                document.getElementById("error").textContent = "Please field highlighted fields";
+                document.getElementById("error").style.color = "red";
+            }
+
+            else
+            {
+                console.log(obj);
+                document.getElementById("error").textContent = "";
+            }
+            // console.log("age: " + age);
+            // console.log("Name: " + name);
+            // console.log("Gender: " + Gender);
+
+        }
+
+        document.querySelector("#btn").addEventListener("click",printDetails);
+
         
 
     </script>
