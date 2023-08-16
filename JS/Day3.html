@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- NAME -->
+    <p>Name:</p>
+    <input type="text" id="name"><br><br>
+    
+    <!-- AGE -->
+    <p>Age:</p>
+    <input type="text" id="age"><br><br>
+
+    
+    <!-- GENDER -->
+    <label for="Gender">Gender</label><br>
+    <input type="radio" name="Gender" id="Male" value="Male">
+    <label for="Male">Male</label>
+    <input type="radio" name="Gender" id="Female" value="Female">
+    <label for="Female">Female</label>
+    <input type="radio" name="Gender" id="Others" value="Others">
+    <label for="Others">Others</label>
+
+    <br><br>
+
+    <!-- STATES -->
+    <label for="states">Choose your State: </label>
+    <select name="statelist" id="state">
+        <option value="Delhi">Delhi</option>
+        <option value="Kolkata">Kolata</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Banglore">Banglore</option>
+
+    </select>
+    <br><br>
+
+    <!-- MOB -->
+    <p>Phone: </p>
+    <input type="text" id="mob">
+    <br><br>
+
+    <!-- Email -->
+    <p>Email: </p>
+    <input type="text" id="email">
+    <br><br>
+
+    <button id="btn">Submit</button>
+    <p id="error"></p>
+</body>
+</html>
+
+<script>
+    
+    // to check if the form is correctly filled 
+    function checkValidation(name, age, Gender, Male, mob, email)
+    {
+        // Validation for name
+        if(name.length<=0)
+        {
+            document.getElementById("name").style.border="2px solid red";
+        }
+        else
+        {
+            document.getElementById("name").style.border="2px solid green";
+        }
+
+        //Validation for age
+        if(age.length<=0 || age!=Number)
+        {
+            document.getElementById("age").style.border="2px solid red";
+        }
+        else
+        {
+            document.getElementById("age").style.border="2px solid green";
+        }
+
+        //Validation for Gender
+        var selected = document.querySelector('input[name="Gender"]:checked');
+
+        if (selected != null) {
+            document.getElementById("male").style.border = "2px solid red"
+        }
+        else {
+            document.getElementById("male").style.border = "2px solid black";
+        }
+
+        //validation for mobile number 
+        if(mob.length<10)
+        {
+            document.getElementById("mob").style.border="2px solid red";
+        }
+        else
+        {
+            document.getElementById("mob").style.border="2px solid green";
+        }
+
+        //validation for email
+        if(email.length <=0)
+        {
+            document.getElementById("email").style.border="2px solid red"; 
+        }
+        else
+        {
+            document.getElementById("email").style.border="2px solid green";
+        }
+        
+        var x = document.getElementById("email").value;
+        var atposition = x.indexOf("@");
+        var dotposition = x.lastIndexOf(".");
+        if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= x.length) {
+            document.getElementById("email").style.border = "2px solid red"
+            return false;
+        }
+        else
+        {
+            document.getElementById("email").style.border = "2px solid green"
+            return true
+        }
+
+        return(name.length<=0 || email.length<=0 || age.length<=0 || mob.length<10 || selected!=null
+        )
+
+    }
+
+    document.querySelector("#btn").addEventListener("click", printDetails);
+
+    function printDetails()
+    {
+        let name = document.getElementById("name").value;
+        let age = document.getElementById("age").value;
+        let gender = document.getElementById("Gender").value;
+        let state = document.getElementById("state").value;
+        let phone = document.getElementById("mob").value;
+        let emails = document.getElementById("email").value;
+
+        let obj = {
+            name : name,
+            age : age,
+            email : email,
+            phone : mob,
+            gender : Gender,
+            state : state
+        }
+
+        if(checkValidation(name, email, age, mob, selected))
+        {
+            document.getElementById("btn").style.backgroundColor= "red"
+            //document.getElementById("btn").style.backgroundColor= "red"
+            document.getElementById("error").textContent="Please fill the highlighted fields!";
+            document.getElementById("error").style.color="red";
+        }
+        else
+        {
+            console.log(obj);
+            document.getElementById("error").textContent = "";
+        }
+
+    }
+</script>
