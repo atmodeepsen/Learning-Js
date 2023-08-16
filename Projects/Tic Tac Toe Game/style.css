@@ -1,0 +1,89 @@
+*, *::after,*::before
+{
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+/* --------------Heading------------- */
+
+.gamename
+{
+    background: linear-gradient(to right, maroon,rgb(203, 34, 34),white);
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+/* ------------------GRID------------------ */
+ .body /*This will change the properties of the page*/
+ {
+     margin: 0;
+     display: flex;
+     justify-content: center;
+ }
+ .board
+{
+    display: grid;
+    grid-template-rows: repeat(3,15vw);
+    grid-template-columns: repeat(3,15vw);
+    justify-content: center;
+    margin-top: 10px;
+    position: relative;
+}
+.box /* This will only change the properties inside each box*/
+{
+    background: maroon;
+    font-size: 60px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    color: #ccc0c0;
+    cursor: pointer;
+    transition: background 0.5s, transform 0.5s;
+}
+.box:hover
+{
+    background: #210508;
+    transform: translateY(-5px);
+}
+.gamerinfo
+{
+    font-size: 20px;
+    background: maroon;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.gameinfo
+{
+    margin-right: 0%;
+    padding: 0 34px;
+    /* position: absolute; */
+}
+.imgbox img
+{
+    margin-left: 30px;
+    margin-top: 20px;
+    width: 0;
+    transition: width 1s ease-in-out;
+    display: flex;
+    justify-content: center;
+}
+#reset
+{
+    margin: 0 10px;
+    padding: 5px 10px;
+    background: maroon;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.line
+{
+    background-color: yellow;
+    width: 30vw;
+    height: 3px;
+    position: absolute; 
+}
