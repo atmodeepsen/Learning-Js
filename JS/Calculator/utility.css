@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300&family=Crimson+Text&display=swap');
+.text-center{
+    text-align: center
+}
+.bg-red
+{
+    background: red;
+}
+.mx-auto
+{
+    margin: auto;
+}
+
+.button
+{
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+    margin: 0 1px;
+    cursor: pointer;
+    background-color: gold;
+    width: 60px ;
+    transition: background 0.5s, transform 0.2s;
+}
+.button:hover{
+    background: red;
+    transform: translateY(-5px);
+    color: white;
+}
+.button:active
+{
+    background: maroon;
+    transform: translateY(3px);
+}
+.flex
+{
+    display: flex;
+}
+.flex-col
+{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.row
+{
+    margin: 4px;
+}
+.row input{
+    border-radius: 5px;
+    padding:4px 5px;
+    margin:0;
+    font-size: 20px;
+    width: 240px;
+}
